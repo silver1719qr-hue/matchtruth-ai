@@ -3,7 +3,7 @@ services:
     name: matchtruth-ai
     runtime: node
     plan: starter
-    buildCommand: unzip -q matchtruth-ai-source.zip && npm run check
+    buildCommand: unzip -oq matchtruth-ai-source.zip && npm run check
     startCommand: node server.mjs
     healthCheckPath: /api/health
     envVars:
@@ -11,3 +11,5 @@ services:
         value: 20.18.0
       - key: API_FOOTBALL_KEY
         sync: false
+      - key: FIXTURES_CACHE_TTL_SECONDS
+        value: "21600"
